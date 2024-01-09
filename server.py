@@ -1,6 +1,7 @@
 import socket
 import logging
 import random
+import string
 
 def run_server():
     #create socket and bind to host and port
@@ -42,7 +43,27 @@ def run_server():
 
 """Metodo para calcular la ponderacion de la cadena recibida"""
 def process_data(data):
-    return random.randint(0,len(data))
+    
+    if "aa" in data or "AA" in data or "aA" in data or "Aa" in data:
+        logging.debug(f"Double 'a' rule detected >> '{data}'")
+        return 1000
+    
+    #(Cantidad de letras * 1.5 + Cantidad de números * 2) / cantidad de espacios.
+    cant_letras = 0
+    cant_digits = 0
+    cant_espacios = 0
+
+    for caracter in data:
+        if caracter in string.ascii_letters:
+            cant_letras = cant_letras + 1
+        if caracter in string.digits:
+            cant_digits = cant_digits + 1
+        if caracter == ' ':
+            cant_espacios = cant_espacios + 1
+
+    ponderacion = (cant_letras * 1.5 + cant_digits * 2) / cant_espacios
+
+    return ponderacion
 
 
 
