@@ -46,7 +46,7 @@ class Server:
         return
 
     """
-    Metodo para calcular la ponderacion de la cadena recibida
+    Metodo para calcular la ponderacion de la cadena recibida.
     """
     def __process_data(self, data):
         
@@ -81,3 +81,6 @@ if __name__ == "__main__":
     #crear el objeto server y ejecutarlo
     server = Server(host="localhost", port=8050)
     server.run_server()
+    end = time.time()
+    duration = end - start
+    logging.debug(f"Server Process completed in {duration} seconds.")

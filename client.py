@@ -119,4 +119,4 @@ if __name__ == "__main__":
 
     end = time.time()
 
-    logging.debug(f"Process completed in {end-start} seconds.")
+    logging.debug(f"Client Process completed in {end-start} seconds.")
