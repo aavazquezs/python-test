@@ -113,8 +113,20 @@ if __name__ == "__main__":
         size = int(argumentos[1])
     else:
         size = 1000000 #1000000
-          
-    client = Client(host="127.0.0.1", port=8050, size=size)
+    
+    #comprobrar si se encuentra el host
+    if len(argumentos) > 2:
+        host = argumentos[2]
+    else:
+        host = "127.0.0.1"
+
+    #comprobar si se encuentra el port
+    if len(argumentos) > 3:
+        port = argumentos[3]
+    else:
+        port = 8050
+
+    client = Client(host=host, port=port, size=size)
     client.execute_client()
 
     end = time.time()
